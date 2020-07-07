@@ -18,9 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       transform: Matrix4.translationValues(xOffset, yOffset, 0)
-        ..scale(scaleFactor),
+        ..scale(scaleFactor)
+        ..rotateY(isDrawerOpen ? 0.6 : 0),
       duration: Duration(milliseconds: 250),
-      color: Colors.grey[200],
+      decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0)),
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -47,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           icon: Icon(Icons.menu),
                           onPressed: () {
                             setState(() {
-                              xOffset = -80;
+                              xOffset = -50;
                               yOffset = 150;
                               scaleFactor = 0.6;
                               isDrawerOpen = true;
